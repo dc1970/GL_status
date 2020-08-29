@@ -1,4 +1,0 @@
-Number,Module Name,Dv Eng,Tests,Fast Status,Fast version,Slow Status,Slow version,Priority,Notes
-51,CLOCKS,Louis,clks_pllcon,Pass   ,gld118g-gld121g,Pass,gld118g-gld121g,High,
-52,CLOCKS,Louis,clks_en_checks,Pass   ,gld118g-gld121g,Pass,gld118g-gld121g,High,
-58,CLOCKS,Steven,clks_en,Pass   ,gld118g-gld121g,Pass,gld118g-gld121g,High,
