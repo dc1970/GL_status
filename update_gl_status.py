@@ -1,8 +1,8 @@
 import csv
 
 if __name__ == '__main__':
-    csv_in_file = 'Arbel_GL-v4.csv'
-    csv_out_file = 'Arbel_GL-v5.csv'
+    csv_in_file = 'Arbel_GL-v5.csv'
+    csv_out_file = 'Arbel_GL-out.csv'
     stat_file_name = 'DVTool_arbel_gld122g.stat'
     total_tests = 0
     total_pass_fast = 0
@@ -26,14 +26,14 @@ if __name__ == '__main__':
         for row in csv_in_dict:
             total_tests += 1
             # Update Fast status
-            if 'Pass' in row['Fast Status'] or 'Fail' in row['Fast Status']:
+            if 'pass' in row['Fast Status'] or 'fail' in row['Fast Status']:
                 row['Fast Status'] = ''
             if row['Tests'] in fast_stat.keys():
                 row['Fast Status'] = fast_stat[row['Tests']]
             if row['Fast Status'] == 'pass':
                 total_pass_fast += 1
             # Update slow status
-            if 'Pass' in row['Slow Status'] or 'Fail' in row['Slow Status']:
+            if 'pass' in row['Slow Status'] or 'fail' in row['Slow Status']:
                 row['Slow Status'] = ''
             if row['Tests'] in slow_stat.keys():
                 row['Slow Status'] = slow_stat[row['Tests']]
@@ -49,7 +49,10 @@ if __name__ == '__main__':
         for row in result_dict:
             writer.writerow(row)
         print(row)
-        # writer.writerow({'Number': 'Total:', 'Module Name': total_tests, 'Dv Eng': 'Passed fast:', 'Tests': total_pass_fast, 'Fast Status': 'Passed Slow:', 'Fast Version': total_pass_slow})
+
+    out_file = open(csv_out_file, 'a')
+    out_file.write(',Total tests:,{},Passed in fast,{},Passed in slow,{}'.format(total_tests, total_pass_fast, total_pass_slow))
+
 
     print('Total Tests: ', total_tests)
     print('Total passed in fast: ', total_pass_fast)
