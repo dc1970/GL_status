@@ -28,15 +28,15 @@ if __name__ == '__main__':
             # Update Fast status
             if 'pass' in row['Fast Status'] or 'fail' in row['Fast Status']:
                 row['Fast Status'] = ''
-            if row['Tests'] in fast_stat.keys():
-                row['Fast Status'] = fast_stat[row['Tests']]
+            if row['Tests'].strip() in fast_stat.keys():
+                row['Fast Status'] = fast_stat[row['Tests'].strip()]
             if row['Fast Status'] == 'pass':
                 total_pass_fast += 1
             # Update slow status
             if 'pass' in row['Slow Status'] or 'fail' in row['Slow Status']:
                 row['Slow Status'] = ''
-            if row['Tests'] in slow_stat.keys():
-                row['Slow Status'] = slow_stat[row['Tests']]
+            if row['Tests'].strip() in slow_stat.keys():
+                row['Slow Status'] = slow_stat[row['Tests'].strip()]
             if row['Slow Status'] == 'pass':
                 total_pass_slow += 1
             result_dict.append(row)
